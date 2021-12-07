@@ -60,7 +60,9 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <div v-if="isLoading">Loading</div>
+  <template v-if="isLoading">
+    <el-skeleton :rows="5" animated />
+  </template>
 
   <el-dialog
     v-model="createModalVisible"
@@ -74,13 +76,13 @@ onBeforeUnmount(() => {
     </el-form>
     <template #footer>
       <span class="dialog-footer">
-        <Button type="white" @click="handleCancelCreateList">Cancel</Button>
-        <Button type="primary" @click="handleCreateList">Confirm</Button>
+        <Button variant="white" @click="handleCancelCreateList">Cancel</Button>
+        <Button variant="primary" @click="handleCreateList">Confirm</Button>
       </span>
     </template>
   </el-dialog>
 
-  <div class="list">
+  <div class="list" v-if="!isLoading">
     <div v-for="(list, index) in lists" :key="index" class="list-item">
       <router-link :to="`/wishlist/${list.id}`">{{ list.title }}</router-link>
     </div>

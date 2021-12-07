@@ -101,10 +101,10 @@ onBeforeUnmount(() => {
       <span>Are you sure you want to delete this wishlist?</span>
       <template #footer>
         <span class="dialog-footer">
-          <Button type="white" @click="deleteModalVisible = false"
+          <Button variant="white" @click="deleteModalVisible = false"
             >Cancel</Button
           >
-          <Button type="primary" @click="handleDeleteWishlist">
+          <Button variant="primary" @click="handleDeleteWishlist">
             Confirm
           </Button>
         </span>
@@ -113,11 +113,13 @@ onBeforeUnmount(() => {
 
     <el-row justify="space-between">
       <div>
-        <Button @click="handleToggleIsAdding" type="white">Add new item</Button>
-        <Button @click="handleShareClick" type="white">Send wishlist</Button>
+        <Button @click="handleToggleIsAdding" variant="white"
+          >Add new item</Button
+        >
+        <Button @click="handleShareClick" variant="white">Send wishlist</Button>
       </div>
       <div>
-        <Button @click="deleteModalVisible = true" type="white">
+        <Button @click="deleteModalVisible = true" variant="white">
           Delete wishlist
         </Button>
 
@@ -141,7 +143,7 @@ onBeforeUnmount(() => {
         <el-input v-model="name" placeholder="What do you wish for?" />
 
         <Button
-          type="primary"
+          variant="primary"
           @click="handleClick"
           :style="{ marginLeft: '1rem' }"
         >

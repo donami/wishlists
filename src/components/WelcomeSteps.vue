@@ -1,3 +1,16 @@
+<script lang="ts" setup>
+import WelcomeStepItem from './WelcomeStepItem.vue';
+import { Present, Promotion, Select } from '@element-plus/icons';
+import { useRouter } from 'vue-router';
+import Button from './Button.vue';
+
+const router = useRouter();
+
+const handleGetStartedClick = () => {
+  router.push('/my-wishlists');
+};
+</script>
+
 <template>
   <div class="welcome-steps">
     <Container>
@@ -30,43 +43,13 @@
         </el-col>
       </el-row>
       <el-row class="get-started" justify="center">
-        <el-button type="primary" @click="handleGetStartedClick"
-          >Get started</el-button
-        >
+        <Button variant="primary" @click="handleGetStartedClick">
+          Get started
+        </Button>
       </el-row>
     </Container>
   </div>
 </template>
-
-<script lang="ts">
-import { defineComponent } from 'vue';
-import WelcomeStepItem from './WelcomeStepItem.vue';
-import { Present, Promotion, Select } from '@element-plus/icons';
-import { useRouter } from 'vue-router';
-
-const WelcomeSteps = defineComponent({
-  name: 'WelcomeSteps',
-  components: {
-    WelcomeStepItem,
-    Present,
-    Promotion,
-    Select,
-  },
-  setup() {
-    const router = useRouter();
-
-    const handleGetStartedClick = () => {
-      router.push('/wishlist');
-    };
-
-    return {
-      handleGetStartedClick,
-    };
-  },
-});
-
-export default WelcomeSteps;
-</script>
 
 <style lang="scss" scoped>
 .welcome-steps {

@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { defineProps, withDefaults, toRefs } from 'vue';
+import { withDefaults, toRefs } from 'vue';
 
 interface Props {
   variant?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5';
@@ -29,7 +29,7 @@ h3,
 h4,
 h5 {
   &.divider {
-    border-bottom: 1px solid #ccc;
+    border-bottom: 1px solid #8e0fff;
     padding-bottom: 1rem;
     margin-bottom: 1rem;
   }

@@ -1,9 +1,9 @@
 <script lang="ts" setup>
-import { defineProps, withDefaults, computed, CSSProperties } from 'vue';
+import { withDefaults, computed, CSSProperties } from 'vue';
 import { useCssVar } from '@vueuse/core';
 
 interface Props {
-  type: 'primary' | 'plain' | 'white';
+  variant: 'primary' | 'plain' | 'white';
   size?: 'mini' | 'small' | 'medium' | 'large';
   tag?: 'router-link';
   to?: string;
@@ -11,7 +11,7 @@ interface Props {
 }
 
 const props = withDefaults(defineProps<Props>(), {
-  type: 'plain',
+  variant: 'plain',
   disabled: false,
 });
 
@@ -31,7 +31,7 @@ const buttonStyle = computed(() => {
   let styles: { [key: string]: any } = {
     '--button-text-font-color': 'white',
   };
-  if (props.type === 'primary') {
+  if (props.variant === 'primary') {
     styles = {
       ...styles,
       '--button-bg-color': `linear-gradient(
@@ -41,7 +41,7 @@ const buttonStyle = computed(() => {
     )`,
       '--button-text-bg-color': 'transparent',
     };
-  } else if (props.type === 'white') {
+  } else if (props.variant === 'white') {
     styles = {
       ...styles,
       '--button-bg-color': `linear-gradient(

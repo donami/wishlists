@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { ref, defineProps, defineEmits, computed } from 'vue';
+import { ref } from 'vue';
 import { Edit, Delete } from '@element-plus/icons';
 import stc from 'string-to-color';
 import pick from 'pick-a-good-color';

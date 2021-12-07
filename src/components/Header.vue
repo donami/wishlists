@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { defineProps, defineEmits, computed } from 'vue';
+import { computed } from 'vue';
 import Button from '../components/Button.vue';
 
 const props = defineProps({
@@ -28,7 +28,7 @@ const isAuthed = computed(() => props.isAuthed);
       <router-link v-if="isAuthed" to="/my-wishlists">My Wishlists</router-link>
     </nav>
     <div class="user">
-      <Button type="primary" v-if="!isAuthed" tag="router-link" to="/login">
+      <Button variant="primary" v-if="!isAuthed" tag="router-link" to="/login">
         Sign in
       </Button>
       <Button v-if="!isAuthed" tag="router-link" to="/register">

@@ -67,6 +67,8 @@ import Header from './components/Header.vue';
 const router = useRouter();
 const isAuthed = ref(true);
 
+console.log(import.meta.env);
+
 auth.onAuthStateChanged((user) => {
   if (user) {
     isAuthed.value = true;
@@ -84,6 +86,8 @@ const handleSignout = () => {
 <style lang="scss">
 * {
   font-family: 'Poppins', Helvetica, Arial, sans-serif;
+  padding: 0;
+  margin: 0;
 }
 
 html,

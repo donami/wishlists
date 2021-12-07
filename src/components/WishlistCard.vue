@@ -1,13 +1,5 @@
 <script lang="ts" setup>
-import {
-  ref,
-  withDefaults,
-  defineProps,
-  defineEmits,
-  computed,
-  watch,
-  toRefs,
-} from 'vue';
+import { ref, withDefaults, computed, watch, toRefs } from 'vue';
 import { Edit } from '@element-plus/icons';
 import WishlistItem from './WishlistItem.vue';
 import Button from './Button.vue';
@@ -59,7 +51,38 @@ const onRemoveItem = (payload: { itemId: string }) => {
       <el-skeleton :rows="5" animated />
     </template>
     <template v-if="!loading && list">
-      <el-row
+      <div class="top">
+        <template v-if="!isEditing">
+          <h2>{{ list.title }}</h2>
+          <button
+            @click="isEditing = !isEditing"
+            :style="{
+              border: 0,
+              background: 'transparent',
+              display: 'flex',
+              marginLeft: '0.5rem',
+              cursor: 'pointer',
+            }"
+          >
+            <el-icon class="el-icon"><Edit /></el-icon>
+          </button>
+        </template>
+        <template v-if="isEditing">
+          <el-input placeholder="Name your wishlist" v-model="localName" />
+          <Button
+            variant="primary"
+            size="mini"
+            @click="handleSaveName"
+            :style="{ marginLeft: '0.5rem' }"
+          >
+            Save
+          </Button>
+          <Button variant="white" size="mini" @click="handleCancelEditName">
+            Cancel
+          </Button>
+        </template>
+      </div>
+      <!-- <el-row
         gutter="20"
         :style="{
           alignItems: 'center',
@@ -85,18 +108,18 @@ const onRemoveItem = (payload: { itemId: string }) => {
         </template>
         <template v-if="isEditing">
           <Button
-            type="primary"
+            variant="primary"
             size="mini"
             @click="handleSaveName"
             :style="{ marginLeft: '0.5rem' }"
           >
             Save
           </Button>
-          <Button type="white" size="mini" @click="handleCancelEditName">
+          <Button variant="white" size="mini" @click="handleCancelEditName">
             Cancel
           </Button>
         </template>
-      </el-row>
+      </el-row> -->
 
       <p v-if="!items.length" class="empty-list-text">
         Your wish list is empty! Add a wish by pressing the
@@ -132,5 +155,20 @@ const onRemoveItem = (payload: { itemId: string }) => {
 
 .empty-list-text {
   text-align: left;
+}
+
+.top {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #8e0fff;
+  margin-bottom: 1rem;
+  padding-bottom: 0.75rem;
+
+  h1,
+  h2,
+  h3 {
+    margin: 0;
+    padding: 0;
+  }
 }
 </style>
